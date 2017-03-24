@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<body>
+    <h1>Auto populate forms</h1>
+    <form class="form-horizontal" id="inputForm">
+        <div class="form-group">
+            <label for="firstNameInput">First Name</label>
+            <div class="fg-line">
+                <input type="text" id="firstNameInput" name="firstNameInput" placeholder="First Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstNameInput">Last Name</label>
+            <div class="fg-line">
+                <input type="text" id="lastNameInput" name="lastNameInput" placeholder="First Name">
+            </div>
+        </div>
+        <button type="submit" class="btn-success">Submit</button>
+    </form>
+</body>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        console.log("Document Ready");
+        populateForm();
+
+    });
+
+    function populateForm(data) {
+
+        //simulating a JSON object coming from the service via AJAX call:
+        var data = {};
+        data.firstName = "John";
+        data.lastName = "Doe";
+
+        var firstName = data.firstName;
+        var lastName = data.lastName;
+
+        $("#inputForm").find("#firstNameInput").val(firstName);
+        $("#inputForm").find("#lastNameInput").val(lastName);
+    }
+</script>

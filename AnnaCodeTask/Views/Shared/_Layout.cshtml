@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link href="~/Assets/bower_components/chosen/chosen.css" rel="stylesheet" />
+    <link href="~/Assets/bower_components/angular-chosen-localytics/chosen-spinner.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    <script src="~/Assets/bower_components/angular/angular.js"></script>
+    <script src="~/Assets/bower_components/jquery/dist/jquery.js"></script>
+    <script src="~/Assets/bower_components/angular-chosen-localytics/dist/angular-chosen.js"></script>
+    <script src="~/Assets/bower_components/chosen/chosen.jquery.js"></script>
+
+
+    <script>
+        var APPNAME = "myApp";
+    </script>
+    <script>
+        (function () {
+            "use strict"
+            angular.module(APPNAME, ['localytics.directives']);
+        })();
+
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
